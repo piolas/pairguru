@@ -1,0 +1,9 @@
+%table{:style => "width:100%"}
+  %tr
+    %th User name
+    %th Number of comments
+- @comments.each do |comment, i|
+  %tr
+  %td= comment.user.name
+  %td= i
+  
