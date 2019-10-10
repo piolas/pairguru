@@ -1,5 +1,18 @@
 %h1= @movie.title
 .jumbotron
   = @movie.description
+
+= render 'layouts/comment_form'
+
+ 
+%h5 Users's comments about this movie
+
+%ul{:style => "list-style-type:none;"}
+- @comments.each do |comment|
+  %li= comment.user.name
+  %li= comment.comment
+  %li= link_to 'Remove comment', comment_path(comment.id), method: :delete, class: 'btn btn-sm btn-danger'
+
+
 - if user_signed_in?
   %p= link_to 'Email me details about this movie', send_info_movie_path(@movie), class: 'btn btn-sm btn-default'
